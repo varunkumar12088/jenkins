@@ -34,7 +34,7 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: gp2                    # AWS EBS StorageClass (adjust if yours differs)
+        storageClassName: pv-storage                # AWS EBS StorageClass (adjust if yours differs)
         resources:
           requests:
             storage: 20Gi
