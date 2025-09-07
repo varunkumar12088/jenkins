@@ -4,5 +4,5 @@ metadata:
   name: jenkins-admin
 rules:
   - apiGroups: [""]
-    resources: ["pods", "services", "deployments", "statefulsets", "*"]
+    resources: ["*"]
     verbs: ["*"]
