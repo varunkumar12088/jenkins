@@ -27,5 +27,5 @@ spec:
         - name: jenkins-home
           hostPath:
             path: /mnt/data
-            type: Directory
+            type: DirectoryOrCreate
 
