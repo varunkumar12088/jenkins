@@ -7,3 +7,4 @@ parameters:
   provisioningMode: efs-ap
 reclaimPolicy: Retain
 volumeBindingMode: Immediate
+allowVolumeExpansion: false
