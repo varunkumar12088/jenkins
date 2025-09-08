@@ -5,6 +5,7 @@ metadata:
 provisioner: efs.csi.aws.com
 parameters:
   provisioningMode: efs-ap
+  fileSystemId: fs-0c2ea49420679e4c1
 reclaimPolicy: Retain
 volumeBindingMode: Immediate
 allowVolumeExpansion: false
