@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: test-efs-pvc
+  namespace: default
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: pv-storage   # Your EFS StorageClass name
+  resources:
+    requests:
+      storage: 5Gi
