@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: test-efs-pvc
-  namespace: default
+  namespace: jenkins
 spec:
   accessModes:
     - ReadWriteMany
