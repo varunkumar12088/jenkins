@@ -3,4 +3,7 @@ kind: StorageClass
 metadata:
   name: pv-storage
 provisioner: efs.csi.aws.com
-
+parameters:
+  provisioningMode: efs-ap
+reclaimPolicy: Retain
+volumeBindingMode: Immediate
