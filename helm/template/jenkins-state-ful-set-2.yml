@@ -23,24 +23,13 @@ spec:
           volumeMounts:
             - name: jenkins-home
               mountPath: /var/jenkins_home
-            - name: docker-socket
-              mountPath: /var/run/docker.sock
-            - name: kubectl-binary
-              mountPath: /usr/bin/kubectl
-              #subPath: kubectl
-          # Optionally add securityContext if needed
-          # securityContext:
-          #   runAsUser: 1000
-          #   fsGroup: 1000
+            - name: binary
+              mountPath: /usr/bin
       volumes:
-        - name: docker-socket
+        - name: binary
           hostPath:
-            path: /var/run/docker.sock
-            type: Socket
-        - name: kubectl-binary
-          hostPath:
-            path: /usr/bin/kubectl
-            type: File
+            path: /usr/bin
+            type: Folder
   volumeClaimTemplates:
     - metadata:
         name: jenkins-home
