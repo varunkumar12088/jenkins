@@ -29,7 +29,7 @@ spec:
         - name: binary
           hostPath:
             path: /usr/bin
-            type: Folder
+            type: Directory
   volumeClaimTemplates:
     - metadata:
         name: jenkins-home
