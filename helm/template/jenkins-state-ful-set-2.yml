@@ -28,6 +28,10 @@ spec:
             - name: kubectl-binary
               mountPath: /usr/bin/kubectl
               subPath: kubectl
+          # Optionally add securityContext if needed
+          # securityContext:
+          #   runAsUser: 1000
+          #   fsGroup: 1000
       volumes:
         - name: docker-socket
           hostPath:
@@ -42,8 +46,8 @@ spec:
         name: jenkins-home
       spec:
         accessModes:
-          - ReadWriteMany
-        storageClassName: pv-storage                # AWS EBS StorageClass (adjust if yours differs)
+          - ReadWriteOnce           # Adjust based on your storage class support
+        storageClassName: pv-storage    # Modify per your cluster's storage class
         resources:
           requests:
             storage: 20Gi
