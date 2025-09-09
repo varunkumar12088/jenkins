@@ -27,7 +27,7 @@ spec:
               mountPath: /var/run/docker.sock
             - name: kubectl-binary
               mountPath: /usr/bin/kubectl
-              subPath: kubectl
+              #subPath: kubectl
           # Optionally add securityContext if needed
           # securityContext:
           #   runAsUser: 1000
