@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: jenkins
+  namespace: jenkins
+spec:
+  serviceName: jenkins-service
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      serviceAccountName: jenkins-admin
+      containers:
+        - name: jenkins
+          image: jenkins/jenkins:jdk21
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: jenkins-home
+              mountPath: /var/jenkins_home
+            - name: docker-socket
+              mountPath: /var/run/docker.sock
+            - name: kubectl-binary
+              mountPath: /usr/bin/kubectl
+              subPath: kubectl
+          # Optionally add securityContext if needed
+          # securityContext:
+          #   runAsUser: 1000
+          #   fsGroup: 1000
+      volumes:
+        - name: docker-socket
+          hostPath:
+            path: /var/run/docker.sock
+            type: Socket
+        - name: kubectl-binary
+          hostPath:
+            path: /usr/bin/kubectl
+            type: File
+  volumeClaimTemplates:
+    - metadata:
+        name: jenkins-home
+      spec:
+        accessModes:
+          - ReadWriteMany           # Adjust based on your storage class support
+        storageClassName: pv-storage    # Modify per your cluster's storage class
+        resources:
+          requests:
+            storage: 20Gi
