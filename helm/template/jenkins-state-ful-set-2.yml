@@ -46,7 +46,7 @@ spec:
         name: jenkins-home
       spec:
         accessModes:
-          - ReadWriteOnce           # Adjust based on your storage class support
+          - ReadWriteMany           # Adjust based on your storage class support
         storageClassName: pv-storage    # Modify per your cluster's storage class
         resources:
           requests:
