@@ -23,13 +23,19 @@ spec:
           volumeMounts:
             - name: jenkins-home
               mountPath: /var/jenkins_home
-            - name: binary
-              mountPath: /usr/bin
+            - name: docker-binary
+              mountPath: /usr/bin/docker
+            - name: kubectl-binary
+              mountPath: /usr/bin/kubectl
       volumes:
-        - name: binary
+        - name: docker-binary
           hostPath:
-            path: /usr/bin
-            type: Directory
+            path: /usr/bin/docker
+            type: File
+        - name: kubectl-binary
+          hostPath:
+            path: /usr/bin/kubectl
+            type: File
   volumeClaimTemplates:
     - metadata:
         name: jenkins-home
